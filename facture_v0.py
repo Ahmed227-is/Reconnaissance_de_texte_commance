@@ -3,10 +3,11 @@ import json
 import base64
 from pathlib import Path
 import pandas as pd
+import pprint
 
 url = "https://openrouter.ai/api/v1/chat/completions"
 headers = {
-    "Authorization": f"Bearer {"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"}",
+    "Authorization": f"Bearer {"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"}",
     "Content-Type": "application/json"
 }
 
@@ -16,7 +17,7 @@ def encode_image_to_base64(image_path):
         return base64.b64encode(image_file.read()).decode('utf-8')
 
 # Read and encode the image
-image_path = "ticket.png"
+image_path = "image1.png"
 base64_image = encode_image_to_base64(image_path)
 data_url = f"data:image/jpeg;base64,{base64_image}"
 
@@ -47,11 +48,16 @@ response = requests.post(url, headers=headers, json=payload)
 
 json_resp = response.json()
 
+#pprint.pprint(json_resp)
+
+
 json_str = json_resp.get("choices", [])[0].get("message", {}).get("content", "No content found")
 json_object = json.loads(json_str.replace('json', '').replace('```', ''))
 
 
 df = pd.DataFrame(json_object)
+
+df.to_excel("extracted.xlsx", index=False)
 
 
 print(df)
