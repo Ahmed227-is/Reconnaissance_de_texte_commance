@@ -7,7 +7,7 @@ import pprint
 
 url = "https://openrouter.ai/api/v1/chat/completions"
 headers = {
-    "Authorization": f"Bearer {"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"}",
+    "Authorization": f"Bearer {"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"}",
     "Content-Type": "application/json"
 }
 

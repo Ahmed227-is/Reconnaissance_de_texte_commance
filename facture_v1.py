@@ -42,7 +42,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp', 'pdf'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # OpenRouter Config
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "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")
+OPENROUTER_API_KEY = "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"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL = "google/gemini-2.0-flash-001"
 HEADERS = {
